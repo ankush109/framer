@@ -6,14 +6,6 @@ import { useScroll, motion, useTransform } from "framer-motion";
 import { useRef } from "react";
 
 function Discover() {
-  const containerRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end end"],
-  });
-  useEffect(() => {
-    scrollYProgress.on("change", (e) => console.log(scrollYProgress));
-  }, []);
   return (
     <div className="flex relative  flex-col">
       <div className=" flex mt-40 justify-center">
@@ -28,7 +20,7 @@ function Discover() {
       <div className="text-gray-400 flex mt-3 justify-center text-[20px]">
         designed for unparalleled excellence.
       </div>
-      <div className="my-20" ref={containerRef}>
+      <div className="my-20">
         <motion.div className="sticky top-0 flex h-100vh items-center justify-center">
           <Card />
         </motion.div>

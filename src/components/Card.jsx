@@ -1,10 +1,20 @@
-import React from "react";
+import React, { useRef } from "react";
 import card from "../assets/visa.jpg";
+import { motion } from "framer-motion";
+import { useScroll } from "framer-motion";
 function Card() {
+  const containerRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["0 1", "1.33 1"],
+  });
   return (
-    <div
+    <motion.div
+      ref={containerRef}
       style={{
         top: `10%`,
+        scale: scrollYProgress,
+        opacity: scrollYProgress,
       }}
       className="bg-yellow-100 my-20  relative p-10 mx-40  rounded-3xl w-full flex items-center justify-center"
     >
@@ -26,7 +36,7 @@ function Card() {
           <img className="w-[100%] " src={card} />
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 
